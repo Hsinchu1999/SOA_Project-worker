@@ -2,7 +2,7 @@
 
 require 'aws-sdk-sqs'
 
-module CodePraise
+module TravellingSuggestions
   module Messaging
     ## Queue wrapper for AWS SQS
     # Requires: AWS credentials loaded in ENV or through config file
