@@ -2,9 +2,9 @@
 
 require 'figaro'
 
-module CodePraise
+module TravellingSuggestions
   # Setup config environment
-  class CloneReportWorker
+  class MBTIModelUpdateWorker
     # Environment variables setup
     Figaro.application = Figaro::Application.new(
       environment: ENV['WORKER_ENV'] || 'development',
