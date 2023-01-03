@@ -48,22 +48,22 @@ module TravellingSuggestions
         res = {}
         res[:attraction_id] = @attraction_id
         res[:mbti] = {}
-        res[:mbti][:enfj] = @enfj_like / (@enfj_like + @enfj_dislike)
-        res[:mbti][:enfp] = @enfp_like / (@enfp_like + @enfp_dislike)
-        res[:mbti][:entj] = @entj_like / (@entj_like + @entj_dislike)
-        res[:mbti][:entp] = @entp_like / (@entp_like + @entp_dislike)
-        res[:mbti][:esfj] = @esfj_like / (@esfj_like + @esfj_dislike)
-        res[:mbti][:esfp] = @esfp_like / (@esfp_like + @esfp_dislike)
-        res[:mbti][:estj] = @estj_like / (@estj_like + @estj_dislike)
-        res[:mbti][:estp] = @estp_like / (@estp_like + @estp_dislike)
-        res[:mbti][:infj] = @infj_like / (@infj_like + @infj_dislike)
-        res[:mbti][:infp] = @infp_like / (@infp_like + @infp_dislike)
-        res[:mbti][:intj] = @intj_like / (@intj_like + @intj_dislike)
-        res[:mbti][:intp] = @intp_like / (@intp_like + @intp_dislike)
-        res[:mbti][:isfj] = @isfj_like / (@isfj_like + @isfj_dislike)
-        res[:mbti][:isfp] = @isfp_like / (@isfp_like + @isfp_dislike)
-        res[:mbti][:istj] = @istj_like / (@istj_like + @istj_dislike)
-        res[:mbti][:istp] = @istp_like / (@istp_like + @istp_dislike)
+        res[:mbti][:enfj] = @attributes[:enfj_like].to_f / (@attributes[:enfj_like] + @attributes[:enfj_dislike])
+        res[:mbti][:enfj] = @attributes[:enfp_like].to_f / (@attributes[:enfp_like] + @attributes[:enfp_dislike])
+        res[:mbti][:entj] = @attributes[:entj_like].to_f / (@attributes[:entj_like] + @attributes[:entj_dislike])
+        res[:mbti][:entp] = @attributes[:entp_like].to_f / (@attributes[:entp_like] + @attributes[:entp_dislike])
+        res[:mbti][:esfj] = @attributes[:esfj_like].to_f / (@attributes[:esfj_like] + @attributes[:esfj_dislike])
+        res[:mbti][:esfp] = @attributes[:esfp_like].to_f / (@attributes[:esfp_like] + @attributes[:esfp_dislike])
+        res[:mbti][:estj] = @attributes[:estj_like].to_f / (@attributes[:estj_like] + @attributes[:estj_dislike])
+        res[:mbti][:estp] = @attributes[:estp_like].to_f / (@attributes[:estp_like] + @attributes[:estp_dislike])
+        res[:mbti][:infj] = @attributes[:infj_like].to_f / (@attributes[:infj_like] + @attributes[:infj_dislike])
+        res[:mbti][:infp] = @attributes[:infp_like].to_f / (@attributes[:infp_like] + @attributes[:infp_dislike])
+        res[:mbti][:intj] = @attributes[:intj_like].to_f / (@attributes[:intj_like] + @attributes[:intj_dislike])
+        res[:mbti][:intp] = @attributes[:intp_like].to_f / (@attributes[:intp_like] + @attributes[:intp_dislike])
+        res[:mbti][:isfj] = @attributes[:isfj_like].to_f / (@attributes[:isfj_like] + @attributes[:isfj_dislike])
+        res[:mbti][:isfp] = @attributes[:isfp_like].to_f / (@attributes[:isfp_like] + @attributes[:isfp_dislike])
+        res[:mbti][:istj] = @attributes[:istj_like].to_f / (@attributes[:istj_like] + @attributes[:istj_dislike])
+        res[:mbti][:istp] = @attributes[:istp_like].to_f / (@attributes[:istp_like] + @attributes[:istp_dislike])
 
         res
       end
