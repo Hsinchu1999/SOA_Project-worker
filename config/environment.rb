@@ -12,5 +12,8 @@ module TravellingSuggestions
     )
     Figaro.load
     def self.config() = Figaro.env
+    ENV['DATABASE_URL'] = "sqlite://#{config.DB_FILENAME}"
+    DB = Sequel.connect(ENV.fetch('DATABASE_URL'))
+    def self.DB = DB
   end
 end
