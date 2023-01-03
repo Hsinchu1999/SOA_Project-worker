@@ -4,7 +4,7 @@ require 'sequel'
 
 Sequel.migration do
   change do
-    create_table(:preference) do
+    create_table(:preferences) do
       primary_key :id
 
       Integer :attraction_id, null: false
