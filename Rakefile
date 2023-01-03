@@ -66,6 +66,42 @@ namespace :heroku do
   end
 end
 
+namespace :db do
+  task :config do
+    require 'sequel'
+    require_relative 'config/environment'
+    require_relative 'spec/helpers/database_helper'
+  end
+
+  desc 'Run migrations'
+  task migrate: :config do
+    Sequel.extension :migration
+    puts "Migrating #{ENV['WORKER_ENV']} database to latest"
+    Sequel::Migrator.run(TravellingSuggestions::MBTIModelUpdateWorker.DB, 'db/migrations')
+  end
+
+  desc 'Wipe records from all tables'
+  task wipe: :config do
+    if ENV['WORKER_ENV'] == :production
+      puts 'Do not damage production database!'
+      return
+    end
+    require_app
+    DatabaseHelper.wipe_database
+  end
+
+  desc 'Delete dev or test database file (set correct RACK_ENV)'
+  task drop: :config do
+    if ENV['WORKER_ENV'] == :production
+      puts 'Do not damage production database!'
+      return
+    end
+
+    FileUtils.rm(TravellingSuggestions::MBTIModelUpdateWorker.config.DB_FILENAME)
+    puts "Deleted #{TravellingSuggestions::MBTIModelUpdateWorker.config.DB_FILENAME}"
+  end
+end
+
 namespace :queue do
   task :config do
     require_relative 'config/environment.rb' # load config info
