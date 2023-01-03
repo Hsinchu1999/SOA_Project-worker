@@ -12,12 +12,17 @@ module TravellingSuggestions
         rebuild_entity Database::PreferenceOrm.first(attraction_id:)
       end
 
+      def self.find_all()
+        preferences = Database::PreferenceOrm.dataset.all
+        rebuild_many_entities(preferences)
+      end
+
       def self.rebuild_entity(db_record)
         return nil unless db_record
 
         Entity::Preference.new(
           id: db_record.id,
-          attraction_id: db_record.nickname,
+          attraction_id: db_record.attraction_id,
           enfj_like: db_record.enfj_like,
           enfj_dislike: db_record.enfj_dislike,
           enfp_like: db_record.enfp_like,
@@ -59,7 +64,41 @@ module TravellingSuggestions
         end
       end
 
-      def self.db_create(nickname, mbti)
+      def self.db_create(
+          attraction_id,
+          enfj_like,
+          enfj_dislike,
+          enfp_like,
+          enfp_dislike,
+          entj_like,
+          entj_dislike,
+          entp_like,
+          entp_dislike,
+          esfj_like,
+          esfj_dislike,
+          esfp_like,
+          esfp_dislike,
+          estj_like,
+          estj_dislike,
+          estp_like,
+          estp_dislike,
+          infj_like,
+          infj_dislike,
+          infp_like,
+          infp_dislike,
+          intj_like,
+          intj_dislike,
+          intp_like,
+          intp_dislike,
+          isfj_like,
+          isfj_dislike,
+          isfp_like,
+          isfp_dislike,
+          istj_like,
+          istj_dislike,
+          istp_like,
+          istp_dislike
+        )
         Database::PreferenceOrm.create(
           attraction_id:,
           enfj_like:,
@@ -93,9 +132,9 @@ module TravellingSuggestions
           istj_like:,
           istj_dislike:,
           istp_like:,
-          istp_disliked:
+          istp_dislike:
         )
       end
-
+    end
   end
 end
