@@ -4,10 +4,13 @@ module TravellingSuggestions
   module Entity
     # An Entity object for recommendation model
     class Model
+
+      attr_accessor :model
+
       def initialize(preferences)
 
         model_temp = {}
-        preferences[0][:mbti].each do |mbti|
+        preferences[0].brief()[:mbti].each do |mbti, _|
           model_temp[mbti] = []
         end
         
