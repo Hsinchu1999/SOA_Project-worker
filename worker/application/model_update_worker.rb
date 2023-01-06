@@ -8,7 +8,7 @@ module TravellingSuggestions
   class MBTIModelUpdateWorker
     def initialize
       @config = MBTIModelUpdateWorker.config
-      @queue = CodePraise::Messaging::Queue.new(
+      @queue = TravellingSuggestions::Messaging::Queue.new(
         @config.TSP_QUEUE_URL, @config
       )
     end
@@ -36,6 +36,9 @@ module TravellingSuggestions
           .new(OpenStruct.new)
           .from_json(update_request_json)
         updates.push update_request
+      end
+      updates.each do |update|
+         Repository::Preference.db_create(attraction_id: update.attraction_id)
       end
       updates
     end
