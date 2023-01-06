@@ -9,40 +9,40 @@ module TravellingSuggestions
     class Preference < Dry::Struct
       include Dry.Types
 
-      attribute :id,                      Strict::Integer
+      attribute :id,                      Integer.optional
       attribute :attraction_id,           Strict::Integer
-      attribute :enfj_like,               Strict::Integer
-      attribute :enfj_dislike,            Strict::Integer
-      attribute :enfp_like,               Strict::Integer
-      attribute :enfp_dislike,            Strict::Integer
-      attribute :entj_like,               Strict::Integer
-      attribute :entj_dislike,            Strict::Integer
-      attribute :entp_like,               Strict::Integer
-      attribute :entp_dislike,            Strict::Integer
-      attribute :esfj_like,               Strict::Integer
-      attribute :esfj_dislike,            Strict::Integer
-      attribute :esfp_like,               Strict::Integer
-      attribute :esfp_dislike,            Strict::Integer
-      attribute :estj_like,               Strict::Integer
-      attribute :estj_dislike,            Strict::Integer
-      attribute :estp_like,               Strict::Integer
-      attribute :estp_dislike,            Strict::Integer
-      attribute :infj_like,               Strict::Integer
-      attribute :infj_dislike,            Strict::Integer
-      attribute :infp_like,               Strict::Integer
-      attribute :infp_dislike,            Strict::Integer
-      attribute :intj_like,               Strict::Integer
-      attribute :intj_dislike,            Strict::Integer
-      attribute :intp_like,               Strict::Integer
-      attribute :intp_dislike,            Strict::Integer
-      attribute :isfj_like,               Strict::Integer
-      attribute :isfj_dislike,            Strict::Integer
-      attribute :isfp_like,               Strict::Integer
-      attribute :isfp_dislike,            Strict::Integer
-      attribute :istj_like,               Strict::Integer
-      attribute :istj_dislike,            Strict::Integer
-      attribute :istp_like,               Strict::Integer
-      attribute :istp_dislike,            Strict::Integer
+      attribute :enfj_like,               Integer.optional
+      attribute :enfj_dislike,            Integer.optional
+      attribute :enfp_like,               Integer.optional
+      attribute :enfp_dislike,            Integer.optional
+      attribute :entj_like,               Integer.optional
+      attribute :entj_dislike,            Integer.optional
+      attribute :entp_like,               Integer.optional
+      attribute :entp_dislike,            Integer.optional
+      attribute :esfj_like,               Integer.optional
+      attribute :esfj_dislike,            Integer.optional
+      attribute :esfp_like,               Integer.optional
+      attribute :esfp_dislike,            Integer.optional
+      attribute :estj_like,               Integer.optional
+      attribute :estj_dislike,            Integer.optional
+      attribute :estp_like,               Integer.optional
+      attribute :estp_dislike,            Integer.optional
+      attribute :infj_like,               Integer.optional
+      attribute :infj_dislike,            Integer.optional
+      attribute :infp_like,               Integer.optional
+      attribute :infp_dislike,            Integer.optional
+      attribute :intj_like,               Integer.optional
+      attribute :intj_dislike,            Integer.optional
+      attribute :intp_like,               Integer.optional
+      attribute :intp_dislike,            Integer.optional
+      attribute :isfj_like,               Integer.optional
+      attribute :isfj_dislike,            Integer.optional
+      attribute :isfp_like,               Integer.optional
+      attribute :isfp_dislike,            Integer.optional
+      attribute :istj_like,               Integer.optional
+      attribute :istj_dislike,            Integer.optional
+      attribute :istp_like,               Integer.optional
+      attribute :istp_dislike,            Integer.optional
 
       def brief
         res = {}
@@ -66,6 +66,9 @@ module TravellingSuggestions
         res[:mbti][:istp] = @attributes[:istp_like].to_f / (@attributes[:istp_like] + @attributes[:istp_dislike])
 
         res
+      end
+      def self.to_attr_hash
+        to_hash.except(:id)
       end
     end
   end

@@ -38,7 +38,8 @@ module TravellingSuggestions
         updates.push update_request
       end
       updates.each do |update|
-         Repository::Preference.db_create(attraction_id: update.attraction_id)
+        Entity::Preference.new()
+        Repository::Preference.db_create(attraction_id: update.attraction_id)
       end
       updates
     end
