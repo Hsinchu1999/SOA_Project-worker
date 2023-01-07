@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
+USERNAME = 'peterchen999'
+IMAGE = 'model_worker'
+VERSION = '0.0.5'
+
 desc 'Run application console (pry)'
 task :console do
   sh 'pry -r ./init.rb'
 end
-
-USERNAME = 'soumyaray'
-IMAGE = 'codepraise-clone_report_worker'
-VERSION = '0.1.0'
 
 desc 'Build Docker image'
 task :worker do

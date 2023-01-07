@@ -13,6 +13,10 @@ gem 'aws-sdk-sqs', '~> 1.48'
 gem 'multi_json'
 gem 'roar'
 
+# Entities
+gem 'dry-struct', '~> 1'
+gem 'dry-types', '~> 1'
+
 # Database
 gem 'hirb', '~> 0'
 gem 'hirb-unicode', '~> 0'
