@@ -8,7 +8,6 @@ module TravellingSuggestions
     # An Entity object for a single preference
     class Preference < Dry::Struct
       include Dry.Types
-      attr_accessor :enfj_like
 
       attribute :id,                      Integer.optional
       attribute :attraction_id,           Strict::Integer
