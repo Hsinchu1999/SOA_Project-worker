@@ -7,6 +7,8 @@ module TravellingSuggestions
   # Setup config environment
   class MBTIModelUpdateWorker
     # Environment variables setup
+    plugin :environments
+    
     Figaro.application = Figaro::Application.new(
       environment: ENV['WORKER_ENV'] || 'development',
       path: File.expand_path('config/secrets.yml')
