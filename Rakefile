@@ -135,7 +135,7 @@ namespace :queue do
   task :purge => :config do
     q_url = @sqs.get_queue_url(queue_name: @config.TSP_QUEUE).queue_url
     @sqs.purge_queue(queue_url: q_url)
-    puts "Queue #{queue_name} purged"
+    puts "Queue #{@config.TSP_QUEUE} purged"
   rescue StandardError => error
     puts "Error purging queue: #{error}"
   end
