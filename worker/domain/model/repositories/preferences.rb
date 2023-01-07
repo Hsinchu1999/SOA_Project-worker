@@ -13,7 +13,7 @@ module TravellingSuggestions
       end
 
       def self.find_all()
-        preferences = Database::PreferenceOrm.dataset.all
+        preferences = Database::PreferenceOrm.all
         rebuild_many_entities(preferences)
       end
 
