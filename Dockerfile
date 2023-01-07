@@ -1,4 +1,4 @@
-# FROM ruby:2.5.3-alpine
+# FROM ruby:3.1.2-alpine
 
 # RUN \
 #     apk update \
@@ -7,13 +7,15 @@
 #     && apk --no-cache add make g++ \
 #     && rm -rf /var/cache/apk/*
 
-FROM peterchen999/ruby-http:3.1.3
+FROM peterchen999/ruby-http:3.1.2
 
-WORKDIR /worker
+WORKDIR /
 
 COPY / .
 
-RUN bundle install
+RUN \
+    gem update bundler \
+    && bundle install
 
 CMD rake worker
 
