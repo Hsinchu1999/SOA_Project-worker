@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+USERNAME = 'everace'
+IMAGE = 'model_worker'
+VERSION = '0.0.5'
+
 desc 'Run application console (pry)'
 task :console do
   sh 'pry -r ./init.rb'

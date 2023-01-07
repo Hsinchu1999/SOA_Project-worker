@@ -1,4 +1,13 @@
-FROM soumyaray/ruby-http:3.1.3
+# FROM ruby:3.1.2-alpine
+
+# RUN \
+#     apk update \
+#     && apk upgrade \
+#     && apk --no-cache add ruby ruby-etc ruby-dev ruby-bundler ruby-json ruby-irb ruby-rake ruby-bigdecimal \
+#     && apk --no-cache add make g++ \
+#     && rm -rf /var/cache/apk/*
+
+FROM everace/ruby-http:3.1.2
 
 WORKDIR /worker
 
