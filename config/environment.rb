@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'figaro'
+require 'sequel'
 
 module TravellingSuggestions
   # Setup config environment

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+
 USERNAME = 'everace'
+
 IMAGE = 'model_worker'
 VERSION = '0.0.5'
 
@@ -8,10 +10,6 @@ desc 'Run application console (pry)'
 task :console do
   sh 'pry -r ./init.rb'
 end
-
-USERNAME = 'soumyaray'
-IMAGE = 'codepraise-clone_report_worker'
-VERSION = '0.1.0'
 
 desc 'Build Docker image'
 task :worker do
@@ -139,7 +137,7 @@ namespace :queue do
   task :purge => :config do
     q_url = @sqs.get_queue_url(queue_name: @config.TSP_QUEUE).queue_url
     @sqs.purge_queue(queue_url: q_url)
-    puts "Queue #{queue_name} purged"
+    puts "Queue #{@config.TSP_QUEUE} purged"
   rescue StandardError => error
     puts "Error purging queue: #{error}"
   end

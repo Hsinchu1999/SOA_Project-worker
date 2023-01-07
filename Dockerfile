@@ -7,15 +7,22 @@
 #     && apk --no-cache add make g++ \
 #     && rm -rf /var/cache/apk/*
 
+
 FROM everace/ruby-http:3.1.2
+
 
 WORKDIR /worker
 
 COPY / .
 
-RUN bundle install
+RUN \
+    bundle config set without 'production' \
+    && bundle install
 
 CMD rake worker
+
+
+
 
 # LOCAL:
 # Build local image with:
