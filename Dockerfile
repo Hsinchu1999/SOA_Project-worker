@@ -7,7 +7,9 @@
 #     && apk --no-cache add make g++ \
 #     && rm -rf /var/cache/apk/*
 
-FROM peterchen999/ruby-http:3.1.2
+
+FROM everace/ruby-http:3.1.2
+
 
 WORKDIR /worker
 
