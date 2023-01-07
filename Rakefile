@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-USERNAME = 'peterchen999'
+
+USERNAME = 'everace'
+
 IMAGE = 'model_worker'
 VERSION = '0.0.5'
 
