@@ -8,6 +8,7 @@ module TravellingSuggestions
     # An Entity object for a single preference
     class Preference < Dry::Struct
       include Dry.Types
+      attr_accessor :enfj_like
 
       attribute :id,                      Integer.optional
       attribute :attraction_id,           Strict::Integer
@@ -67,7 +68,7 @@ module TravellingSuggestions
 
         res
       end
-      def self.to_attr_hash
+      def to_attr_hash
         to_hash.except(:id)
       end
     end

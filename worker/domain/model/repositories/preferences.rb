@@ -63,7 +63,7 @@ module TravellingSuggestions
           Preferences.rebuild_entity(db_member)
         end
       end
-      def self.find_or_create(entity)
+      def self.db_find_or_create(entity)
         Database::PreferenceOrm.find_or_create(entity.to_attr_hash)
       end
       def self.db_create(

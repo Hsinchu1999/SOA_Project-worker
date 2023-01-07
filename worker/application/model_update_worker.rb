@@ -38,41 +38,44 @@ module TravellingSuggestions
         updates.push update_request
       end
       updates.each do |update|
-        Entity::Preference.new(
-          attraction_id,
-          enfj_like=0,
-          enfj_dislike=0,
-          enfp_like=0,
-          enfp_dislike=0,
-          entj_like=0,
-          entj_dislike=0,
-          entp_like=0,
-          entp_dislike=0,
-          esfj_like=0,
-          esfj_dislike=0,
-          esfp_like=0,
-          esfp_dislike=0,
-          estj_like=0,
-          estj_dislike=0,
-          estp_like=0,
-          estp_dislike=0,
-          infj_like=0,
-          infj_dislike=0,
-          infp_like=0,
-          infp_dislike=0,
-          intj_like=0,
-          intj_dislike=0,
-          intp_like=0,
-          intp_dislike=0,
-          isfj_like=0,
-          isfj_dislike=0,
-          isfp_like=0,
-          isfp_dislike=0,
-          istj_like=0,
-          istj_dislike=0,
-          istp_like=0,
-          istp_dislike=0)
-        Repository::Preference.db_create(attraction_id: update.attraction_id)
+        db_update = Repository::Preferences.db_find_or_create(Entity::Preference.new(id: nil, attraction_id: update.attraction_id,
+        enfj_like: nil,
+        enfj_dislike: nil,
+        enfp_like: nil,
+        enfp_dislike: nil,
+        entj_like: nil,
+        entj_dislike: nil,
+        entp_like: nil,
+        entp_dislike: nil,
+        esfj_like: nil,
+        esfj_dislike: nil,
+        esfp_like: nil,
+        esfp_dislike: nil,
+        estj_like: nil,
+        estj_dislike: nil,
+        estp_like: nil,
+        estp_dislike: nil,
+        infj_like: nil,
+        infj_dislike: nil,
+        infp_like: nil,
+        infp_dislike: nil,
+        intj_like: nil,
+        intj_dislike: nil,
+        intp_like: nil,
+        intp_dislike: nil,
+        isfj_like: nil,
+        isfj_dislike: nil,
+        isfp_like: nil,
+        isfp_dislike: nil,
+        istj_like: nil,
+        istj_dislike: nil,
+        istp_like: nil,
+        istp_dislike: nil))
+        rebuild_update = Repository::Preferences.rebuild_entity(db_update)
+        update_value = rebuild_update.send("#{update.mbti.downcase}_#{update.preference}").to_i + 1
+        rebuild_update.send("#{update.mbti.downcase}_#{update.preference}=", update_value)
+        puts rebuild_update
+        db_update.update(rebuild_update.to_attr_hash)
       end
       updates
     end
