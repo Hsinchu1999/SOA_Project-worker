@@ -38,6 +38,7 @@ module TravellingSuggestions
         updates.push update_request
       end
       updates.each do |update|
+        column= "#{update.mbti.downcase}_#{update.preference}".to_sym
         db_update = Repository::Preferences.db_find_or_create(Entity::Preference.new(id: nil, attraction_id: update.attraction_id,
         enfj_like: nil,
         enfj_dislike: nil,
@@ -73,9 +74,7 @@ module TravellingSuggestions
         istp_dislike: nil))
         rebuild_update = Repository::Preferences.rebuild_entity(db_update)
         update_value = rebuild_update.send("#{update.mbti.downcase}_#{update.preference}").to_i + 1
-        rebuild_update.send("#{update.mbti.downcase}_#{update.preference}=", update_value)
-        puts rebuild_update
-        db_update.update(rebuild_update.to_attr_hash)
+        db_update.update(column => update_value)
       end
       updates
     end
