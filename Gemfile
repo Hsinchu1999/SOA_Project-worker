@@ -8,11 +8,12 @@ gem 'figaro', '~> 1.2'
 
 # Messaging
 gem 'aws-sdk-sqs', '~> 1.48'
-
+# Networking
+gem 'http', '~> 5'
 # Representers
 gem 'multi_json'
 gem 'roar'
-
+gem 'roda', '~> 3'
 # Entities
 gem 'dry-struct', '~> 1'
 gem 'dry-types', '~> 1'
