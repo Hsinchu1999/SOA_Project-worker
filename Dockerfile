@@ -1,4 +1,13 @@
-FROM soumyaray/ruby-http:3.1.3
+# FROM ruby:2.5.3-alpine
+
+# RUN \
+#     apk update \
+#     && apk upgrade \
+#     && apk --no-cache add ruby ruby-dev ruby-bundler ruby-json ruby-irb ruby-rake ruby-bigdecimal \
+#     && apk --no-cache add make g++ \
+#     && rm -rf /var/cache/apk/*
+
+FROM peterchen999/ruby-http:3.1.3
 
 WORKDIR /worker
 
