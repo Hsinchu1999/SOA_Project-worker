@@ -8,4 +8,3 @@ module DatabaseHelper
     TravellingSuggestions::App.DB.run('PRAGMA foreign_keys = ON')
   end
 end
-  
