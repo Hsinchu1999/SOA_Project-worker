@@ -3,21 +3,24 @@
 # RUN \
 #     apk update \
 #     && apk upgrade \
-#     && apk --no-cache add ruby ruby-dev ruby-bundler ruby-json ruby-irb ruby-rake ruby-bigdecimal \
+#     && apk --no-cache add ruby ruby-etc ruby-dev ruby-bundler ruby-json ruby-irb ruby-rake ruby-bigdecimal \
 #     && apk --no-cache add make g++ \
 #     && rm -rf /var/cache/apk/*
 
 FROM peterchen999/ruby-http:3.1.2
 
-WORKDIR /
+WORKDIR /worker
 
 COPY / .
 
 RUN \
-    gem update bundler \
+    bundle config set without 'production' \
     && bundle install
 
 CMD rake worker
+
+
+
 
 # LOCAL:
 # Build local image with:

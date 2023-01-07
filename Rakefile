@@ -2,7 +2,7 @@
 
 USERNAME = 'peterchen999'
 IMAGE = 'model_worker'
-VERSION = '0.0.1'
+VERSION = '0.0.5'
 
 desc 'Run application console (pry)'
 task :console do
